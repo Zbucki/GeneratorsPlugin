@@ -1,0 +1,27 @@
+#  CRAFTING
+#  123
+#  456
+#  789
+
+CRAFTINGS:
+  'stoniarka':
+    RESULT:
+      TYPE: SPONGE            #Typ
+      DATA: 0                 #Data
+      AMOUNT: 1               #Ilosc wycraftowanego przedmiotu
+      ENCHANTS:               #Enchanty
+      - 'DAMAGE_ALL;5'
+      NAME: '&cStoniarka'     #Nazwa
+      LORE:                   #Opis
+      - '&7Linijka 1'
+      - '&8Linijka 2'
+    ITEMS:                    #Crafting
+    - 'stone:0 64' #1         #64 stone w pierwszym slocie craftingu
+    - 'stone:0 64' #2         #64 stone w drugim slocie craftingu
+    - 'stone:0 64' #3         #64 stone w trzecim slocie craftingu
+    - 'stone:0 64' #4
+    - 'stone:0 64' #5
+    - 'stone:0 64' #6
+    - 'stone:0 64' #7
+    - 'stone:0 64' #8
+    - 'stone:0 64' #9

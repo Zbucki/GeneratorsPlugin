@@ -1,0 +1,4 @@
+name: GeneratorsPlugin
+version: 1.0
+main: pl.zbucki.generators.GeneratorsPlugin
+author: Zbucki

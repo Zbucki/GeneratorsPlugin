@@ -1,0 +1,11 @@
+GENERATORS:
+  'stoniarka1sec':               #ID stoniarki | ID nie moga sie powtarzac
+    REGEN_TIME: 1000             #Czas do regeneracji stoniarki podany w milisekundach | 1000 = 1s
+    DESTROY_ITEM: GOLD_PICKAXE   #Typ przedmiotu, ktorym mozemy zniszczyc stoniarke i ja odzyskac
+    TYPE: SPONGE                 #Typ
+    NAME: '&cStoniarka'          #Nazwa
+    LORE:                        #Opis
+    - '&7Linijka 1'
+    - '&7Linijka 2'
+    ENCHANTS:                    #Enchanty
+    - 'DAMAGE_ALL;5'

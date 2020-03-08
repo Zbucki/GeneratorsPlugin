@@ -1,0 +1,7 @@
+DATABASE:
+  MODE: FLAT      #MONGODB/FLAT
+  HOST: localhost
+  DATABASE: 'baza'
+  PORT: 27017
+  USERNAME: 'root'
+  PASSWORD: 'haslo'

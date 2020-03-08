@@ -1,0 +1,23 @@
+FARMERS:
+  'boyfarmer':                   #ID farmera | ID nie moga sie powtarzac
+    TIME: 1                      #Czas podmieniania podany w sekundach
+    AT_ONCE_SIZE: 3              #Ilosc blokow, ktore maja byc jednoczesnie podmienione
+    BLOCK_TO_REPLACE: OBSIDIAN   #Block, ktory zostanie podmieniony
+    ITEM:
+      TYPE: OBSIDIAN             #Item
+      NAME: '&7BoyFarmer'        #Nazwa
+      LORE:                      #Opis
+      - '&7linijka 1'
+      - '&7linijka 2'
+      ENCHANTS:                  #Enchanty
+      - 'DAMAGE_ALL;5'
+  'kopaczfosy':
+    TIME: 2
+    AT_ONCE_SIZE: 1
+    BLOCK_TO_REPLACE: AIR
+    ITEM:
+      TYPE: GRASS
+      NAME: '&7Kopacz fosy'
+      LORE: 
+      - '&7linijka 1'
+      - '&7linijka 2'
