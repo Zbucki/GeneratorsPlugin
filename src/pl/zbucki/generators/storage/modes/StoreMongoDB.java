@@ -4,6 +4,7 @@ import org.bson.Document;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.ReplaceOptions;
 
@@ -21,15 +22,23 @@ public class StoreMongoDB implements Store {
 	private final GeneratorsPlugin plugin;
 	private final GeneratorManager manager;
 
-	private MongoClient mongoDatabase;
+	private MongoClient mongoClient;
+	private MongoDatabase mongoDatabase;
 	@Getter
 	private MongoCollection<Document> generatorsCollection;
 	private int loadedData;
 
 	@Override
 	public void connect() {
-		this.generatorsCollection = this.mongoDatabase.getDatabase(plugin.getSettings().MONGODB_DATABASE)
-				.getCollection("generators");
+		try {
+                	this.mongoClient = new MongoClient(plugin.getSettings().MONGODB_HOST, plugin.getSettings().MONGODB_PORT);
+                } catch (UnknownHostException e) {
+                	System.out.println("Could not connect to database!");
+                	e.printStackTrace();
+	        	return;
+                }
+		this.mongoDatabase = this.mongoClient.getDatabase(plugin.getSettings().MONGODB_DATABASE);
+		this.generatorsCollection = this.mongoDatabase.getCollection("generators");
 		manager.getDataExecutor().execute(() -> {
 			for (Document doc : this.generatorsCollection.find()) {
 				manager.addGenerator(Util.locationFromString(doc.getString("location")),
@@ -52,7 +61,7 @@ public class StoreMongoDB implements Store {
 			});
 		});
 		if (isConnected()) {
-			mongoDatabase.close();
+			mongoClient.close();
 		}
 	}
 
@@ -60,11 +69,11 @@ public class StoreMongoDB implements Store {
 	public boolean isConnected() {
 		boolean connect;
 		try {
-			mongoDatabase.getAddress();
+			mongoClient.getAddress();
 			connect = true;
 		} catch (Exception e) {
 			System.out.println("Database unavailable");
-			mongoDatabase.close();
+			mongoClient.close();
 			connect = false;
 		}
 		return connect;
